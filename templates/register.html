@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2 class="text-center">注册新用户</h2>
+            <form action="/reg/" method="post" novalidate id="f1">
+                {% csrf_token %}
+                {% for field in form_obj %}
+{#                    {% if field.label == "性别" %}#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_email"></label>性别#}
+{#                            <label for="id_gender_0"><input type="radio" name="gender" value="0" required id="id_gender_0">男</label>#}
+{#                            <label for="id_gender_1"><input type="radio" name="gender" value="1" required id="id_gender_1">女</label>#}
+{#                            <label for="id_gender_2"><input type="radio" name="gender" value="2" required id="id_gender_2"checked>保密</label>#}
+{#                            <span class="help-block"></span>#}
+{#                        </div>#}
+{#                    {% else %}#}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label}}"></label>
+                            {{ field.label }} {{ field }}
+                            <span class="help-block"></span>
+                        </div>
+{#                    {% endif %}#}
+                {% endfor %}
+
+                <div>
+                    <button type="button" id='b1' class="btn-success">注册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'jquery-1.11.3/jquery.min.js' %}"></script>
+<script>
+    $('#b1').click(function () {
+        var dataobj={};//对于form表单提交数据，在表单内部加入csrf_token 标签，会自动生成一个input标签
+        // <input name="csrfmiddlewaretoken" type="hidden" value="Fj6NgtkDBmMowS7gAUdfR6pLjtuAkPR4IhrXS9bqHefuWs9CVQDXwsLXWB5hrPYp">
+        $('input').each(function () {
+            dataobj[$(this).attr('name')]=$(this).val();//循环属性对应的值，包括csrftoken
+        })
+        {#$('#f1').submit#}
+        $.ajax({
+            url:'/reg/',
+            type:'post',
+            data:dataobj,
+            success:function (res) {
+                console.log(res)
+
+                if(res.code===0){
+                    location.href=res.url;
+                }else {
+                    $.each(res.error_msg,function (k,v) {
+                        //根据k找到对应的input框，把V中的第一个字符串显示出来
+                        $('#id_'+k).next('span').text(v[0]).parent().addClass('has-error');
+                    })
+                }
+            }
+        })
+    });
+    var csrftoken=$('[name="csrfmiddlewaretoken"]').val()
+    $('#id_username').blur(function () {
+        $.ajax({
+            url:'/reg/',
+            type:'post',
+            data:{'username':$('#id_username').val(),'csrfmiddlewaretoken':csrftoken},
+            success:function (res) {
+               $('#id_username').next('span').text(res['error_msg']['username'][0]).parent().addClass('has-error')
+            }
+        })
+    })
+
+    $('form input').focus(function () {
+        $(this).next('span').text('').parent().removeClass('has-error');
+    })
+</script>
+</body>
+</html>

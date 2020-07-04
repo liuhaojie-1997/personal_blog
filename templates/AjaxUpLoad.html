@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sweetalert/sweetalert.css' %}">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="{% static 'jquery-1.11.3/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'sweetalert/sweetalert.min.js' %}"></script>
+
+    <style>
+        body { padding-top: 70px;
+            background-color:#eeeeee;}
+    </style>
+</head>
+<body>
+{% csrf_token %}
+<input type="file" id="f1">
+<button id="b1">上传</button>
+
+<script>
+    $('#b1').click(function () {
+        {# $('#f1') 找到标签  jquery对象加索引，取到dom对象->$('#f1')[0]   $('#f1')[0].files得到一个文件对象列表   $('#f1')[0].files[0]指定文件对象 #}
+        var fd_Obj=new FormData();
+        var csrf_token=$('[name="csrfmiddlewaretoken"]').val();
+        fd_Obj.append('f1',$('#f1')[0].files[0])
+        fd_Obj.append('csrfmiddlewaretoken',csrf_token)
+        //发请求
+        $.ajax({
+            url:'/AjaxUpLoad/',
+            type:'post',
+            data:fd_Obj,
+            processData:false,
+            contentType:false,
+            success:function (data) {
+                console.log(data)
+            }
+        })
+    })
+</script>
+</body>
+</html>

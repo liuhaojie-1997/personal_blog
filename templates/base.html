@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>{{ SITE_NAME }}</title>
+<meta name="keywords" content="{{ SITE_NAME }}" />
+<meta name="description" content="{{ SITE_DESC }}" />
+    {% load static %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% block custom_css %}{% endblock %}
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sliders.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+{% block custom_js %}{% endblock %}
+</head>
+<body>
+<header>
+{#  <div class="logo" >#}
+{#      <h2 class="pull-right">欢迎{{ request.user }}</h2>&nbsp<li><a href="/logout/">退出登陆</a></li>#}
+{#      <h1>{{ SITE_NAME }}</h1>#}
+{#      <p>{{ SITE_DESC }}</p>#}
+{#  </div>#}
+
+    <h3>欢迎{{ request.user }}</h3>
+{#    <a href="/logout/">退出登陆</a></ul>#}
+
+    {% if not request.user.is_authenticated %}
+    <div class='login_info'>您目前是游客<b>
+        <a href="{% url 'login' %}">&nbsp;&raquo;登录</a>&nbsp;
+        <a href="{% url 'reg' %}">&nbsp;&raquo;注册</a></b>
+    </div>
+    {% else %}
+        <div class='login_info'>
+            <b>{{ request.user.username }}</b>&nbsp;
+            <a href="{% url 'publish' %}">写博客</a>
+            <a href="{% url 'logout' %}">注销</a>
+        </div>
+    {% endif %}
+
+{#    <b><a href="{% url 'login' %}">&raquo;登录</a>&nbsp;<a href="{% url 'reg' %}">&raquo;注册</a></b>#}
+
+{#    {% include 'navbar.html' %}#}
+  <nav id="topnav" class="f_l">
+    <ul>
+
+      {% for category in category_list %}
+
+          {% ifequal category.name '全部' %}<a href='{% url 'index' %}'>{{ category.name }}</a>{% else %}<a href="{% url 'category' %}?cid={{ category.id }}">{{ category.name }}</a>{% endifequal %}
+      {% endfor %}
+    </ul>
+
+    <script src="{% static 'js/nav.js' %}"></script>
+  </nav>
+</header>
+<article>
+  <div class="l_box f_l">
+      {% block left_content %}
+
+      {% endblock %}
+  </div>
+  <div class="r_box f_r">
+    <div class="tit01">
+      <h3>关注我</h3>
+      <div class="gzwm">
+        <ul>
+          <li><a class="xlwb" href='https://weibo.com' target='_blank'>新浪微博</a></li>
+          <li><a class="txwb" href='http://weibo.qq.com' target="_blank">腾讯微博</a></li>
+          <li><a class="rss" href="https://www.runoob.com/rss/rss-tutorial.html" target="_blank">RSS</a></li>
+          <li><a class="wx" href="https://mail.google.com/">Gmail邮箱</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--tit01 end-->
+    <div class="moreSelect" id="lp_right_select">
+      <script>
+window.onload = function ()
+{
+  var oLi = document.getElementById("tab").getElementsByTagName("li");
+  var oUl = document.getElementById("ms-main").getElementsByTagName("div");
+
+  for(var i = 0; i < oLi.length; i++)
+  {
+    oLi[i].index = i;
+    oLi[i].onmouseover = function ()
+    {
+      for(var n = 0; n < oLi.length; n++) oLi[n].className="";
+      this.className = "cur";
+      for(var n = 0; n < oUl.length; n++) oUl[n].style.display = "none";
+      oUl[this.index].style.display = "block"
+    }
+  }
+}
+</script>
+      <div class="ms-top">
+        <ul class="hd" id="tab">
+          <li class="cur"><a href="/">浏览排行</a></li>
+          <li><a href="/">评论排行</a></li>
+          <li><a href="/">站长推荐</a></li>
+        </ul>
+      </div>
+      <div class="ms-main" id="ms-main">
+        <div style="display: block;" class="bd bd-news" >
+          <ul>
+            <li><a href="http://www.phpfensi.com/article/20170209/10619.html" target="_blank">国内常用的几种翻墙方法</a></li>
+            <li><a href="https://git-scm.com/book/zh/v2" target="_blank">git使用指南</a></li>
+            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-python?singlepage=true" target="_blank">使用Python在Heroku上入门</a></li>
+            <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>
+            <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>
+            <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
+          </ul>
+        </div>
+
+        <div  class="bd bd-news">
+          <ul>
+            {% for article in article_comment_list %}
+            <li><a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title | slice:':15' }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="bd bd-news">
+          <ul>
+            <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>
+            <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>
+            <li><a href="/" target="_blank">住在手机里的朋友</a></li>
+            <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
+            <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>
+            <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--ms-main end -->
+    </div>
+    <!--切换卡 moreSelect end -->
+
+    <div class="cloud">
+      <h3>标签云</h3>
+      <ul>
+        <li><a href="/">个人博客</a></li>
+        <li><a href="/">web开发</a></li>
+        <li><a href="/">前端设计</a></li>
+        <li><a href="/">Html</a></li>
+        <li><a href="/">CSS3</a></li>
+        <li><a href="/">Html5+css3</a></li>
+        <li><a href="/">百度</a></li>
+        <li><a href="/">Javasript</a></li>
+        <li><a href="/">web开发</a></li>
+        <li><a href="/">前端设计</a></li>
+        <li><a href="/">Html</a></li>
+        <li><a href="/">CSS3</a></li>
+        <li><a href="/">Html5+css3</a></li>
+        <li><a href="/">百度</a></li>
+      </ul>
+    </div>
+    <div class="tuwen">
+      <h3>文章归档</h3>
+      <ul>
+        {% for archive in archive_list %}
+        <li>
+          <p><span class="tutime font-size-18"><a href='{% url 'archive' %}?year={{ archive | slice:":4" }}&month={{ archive | slice:"5:7" }}'>{{ archive }}</a></span></p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="links">
+      <h3>友情链接</h3>
+      <ul>
+        <li><a href="/">web开发</a></li>
+        <li><a href="/">前端设计</a></li>
+        <li><a href="/">Html</a></li>
+        <li><a href="/">CSS3</a></li>
+        <li><a href="/">Html5+css3</a></li>
+        <li><a href="/">百度</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--r_box end -->
+</article>
+<footer>
+  <p class="ft-copyright">某某某的个人博客 蜀ICP备xxxxxxx号-1</p>
+  <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+</footer>
+</body>
+</html>

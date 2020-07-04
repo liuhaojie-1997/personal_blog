@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="08daf625-1003-4188-b4d4-bcd29fd46452" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="blogdb@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="blogdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="blogdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="blogdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ah2YX4PINvuq3fs4n982dY15OQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PythonProjects\myblog\style" />
+      <recent name="D:\PythonProjects\myblog\static\css" />
+      <recent name="D:\PythonProjects\myblog" />
+      <recent name="D:\PythonProjects\myblog\style\js" />
+      <recent name="D:\PythonProjects\myblog\style\kindeditor-4.1.10" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PythonProjects\myblog\templates" />
+      <recent name="D:\PythonProjects\myblog\static" />
+      <recent name="D:\PythonProjects\myblog\static\css" />
+      <recent name="D:\PythonProjects\myblog\static\editormd" />
+      <recent name="D:\PythonProjects\myblog" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="myblog" type="Python.DjangoServer" factoryName="Django server">
+      <module name="myblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="myblog.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08daf625-1003-4188-b4d4-bcd29fd46452" name="Default Changelist" comment="" />
+      <created>1587173552262</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587173552262</updated>
+      <workItem from="1587173555021" duration="18377000" />
+      <workItem from="1587193975090" duration="29885000" />
+      <workItem from="1587261605800" duration="27012000" />
+      <workItem from="1587369649933" duration="2257000" />
+      <workItem from="1593655803391" duration="28832000" />
+      <workItem from="1593738823319" duration="11938000" />
+      <workItem from="1593760889691" duration="21468000" />
+      <workItem from="1593830560745" duration="14291000" />
+      <workItem from="1593848464348" duration="4196000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587189347154">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587189347154" />
+    <state x="1121" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593851511425">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1121" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1593851511425" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1593848802700">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593848802700" />
+    <state width="1036" height="235" key="GridCell.Tab.0.bottom" timestamp="1593850184822">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1036" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593850184822" />
+    <state width="1036" height="235" key="GridCell.Tab.0.center" timestamp="1593850184821">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1036" height="235" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593850184821" />
+    <state width="1036" height="235" key="GridCell.Tab.0.left" timestamp="1593850184821">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1036" height="235" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593850184821" />
+    <state width="1036" height="235" key="GridCell.Tab.0.right" timestamp="1593850184821">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1036" height="235" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593850184821" />
+    <state x="903" y="140" key="SettingsEditor" timestamp="1593852055391">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="903" y="140" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1593852055391" />
+    <state x="640" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1593848465103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593848465103" />
+    <state x="1017" y="234" width="672" height="678" key="search.everywhere.popup" timestamp="1593837393557">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1017" y="234" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1593837393557" />
+  </component>
+</project>

@@ -1,0 +1,159 @@
+<!--
+{#<!DOCTYPE html>#}
+{#<html lang="zh-CN">#}
+{#<head>#}
+{#    <meta charset="utf-8">#}
+{#    <title>EditorMD</title>#}
+{#    {% load static %}#}
+{##}
+{#    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>#}
+{#    <script type="text/javascript" src="{% static 'editormd/editormd.min.js' %}"></script>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'editormd/css/editormd.css' %}"/>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'editormd/lib/codemirror/addon/search/matchesonscrollbar.css' %}"/>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'editormd/lib/codemirror/codemirror.min.css' %}"/>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'editormd/lib/codemirror/addon/dialog/dialog.css' %}"/>#}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{#<div id="editormd">#}
+{#    <textarea style="display:none;">### Hello Editor.md !</textarea>#}
+{#</div>#}
+{#<script type="text/javascript">#}
+{#    $(function() {#}
+{#        /*var editor = editormd("editormd", {#}
+{#            width   : "90%",#}
+{#            height  : 640,#}
+{#            syncScrolling: "single",#}
+{#            path: '../lib/',#}
+{#            autoLoadModules : false // Manually load modules#}
+{#        });#}
+{#*/#}
+{##}
+{#        // or#}
+{#        var editor = editormd({#}
+{#            id   : "editormd",#}
+{#            path : "../lib/"#}
+{#        });#}
+{##}
+{#    });#}
+{#</script>#}
+{##}
+{#</body>#}
+{##}
+{#</html>#}
+
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    {% load static %}
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'editormd/css/editormd.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'editormd/lib/codemirror/addon/search/matchesonscrollbar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'editormd/lib/codemirror/codemirror.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'editormd/lib/codemirror/addon/dialog/dialog.css' %}"/>
+    <!--
+{#    <link rel="stylesheet" href="/style/editormd/css/editormd.css" />#}
+    <link rel="stylesheet" href="css/katex.min.css" /> -->
+
+</head>
+<body>
+
+<form action="{% url 'publish' %}" method="post">
+
+    {% csrf_token %}
+    <p>输入文章标题  {{ publish_form.title }}</p>
+    <p>输入文章描述  {{ publish_form.desc }}</p>
+    <div id="deditor">
+        <textarea id="edit_content" name="edit_content" style="display:none;">### Hello Editor.md !</textarea>
+    </div>
+
+{#    <p>所属用户  {{ publish_form.user}}</p>#}
+    <p>选择文章分类  {{ publish_form.category }}</p>
+    <p>选择文章标签  {{ publish_form.tag }}</p>
+{#    <p>点击量  {{ publish_form.click_count }}</p>#}
+
+    <p>
+
+        <input name="submit" type="submit" id="submit" tabindex="5" value="Submit" class="button" />
+        {#        <button type="submit" id='b1' class="btn-success">提交</button>#}
+    </p>
+</form>
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/editormd.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'editormd/lib/marked.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/lib/prettify.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/lib/raphael.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/lib/underscore.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/lib/sequence-diagram.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/lib/flowchart.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'editormd/lib/jquery.flowchart.min.js' %}"></script>
+
+
+
+<!--
+{#<script src="/style/js/jquery.min.js"></script>#}
+{#<script src="/style/editormd/editormd.js"></script>#}
+ <script src="js/katex.min.js"></script> -->
+<script type="text/javascript">
+    var testEditor;
+    $(function () {
+        //$.get('test.md', function(md){  //如果是放在网站程序中的可以打开注释
+
+        testEditor = editormd({
+            id:"deditor",//注意：这里是上面DIV的id
+            width:"90%",
+            height:640,
+            syncScrolling: "single",
+            path:"{% static 'editormd/lib/' %}",
+
+            theme : "dark",
+            previewTheme : "dark",
+            editorTheme : "pastel-on-dark",
+            //markdown : md,
+            codeFold : true,
+            saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
+            searchReplace : true,
+            //watch : false,                // 关闭实时预览
+            htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
+            //toolbar  : false,             //关闭工具栏
+            //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
+            emoji : true,
+            taskList : true,
+            tocm            : true,         // Using [TOCM]
+            tex : true,                   // 开启科学公式TeX语言支持，默认关闭
+            flowChart : true,             // 开启流程图支持，默认关闭
+            sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
+            //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+            //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+            //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+            //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+            //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+
+
+            /**上传图片相关配置如下*/
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/upload/",//注意你后端的上传图片服务地址
+            onload : function() {
+                console.log('onload', this);
+                this.fullscreen();
+                this.unwatch();
+                this.watch().fullscreen();
+
+                this.setMarkdown("");
+                this.width("100%");
+                this.height(480);
+                this.resize("100%", 640);
+            }
+            //}); 	//如果是放在网站程序中的可以打开注释
+        });});
+</script>
+</body>
+</html>

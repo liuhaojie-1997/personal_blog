@@ -1,0 +1,27 @@
+2020-04-18 20:36:46,229 [Thread-1:27244] [django.request:228] [log:log_response] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\PythonProjects\myblog\app01\views.py", line 58, in index
+    return render(request, 'index.html', locals())
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\contextlib.py", line 112, in __enter__
+    return next(self.gen)
+  File "D:\ProgramData\Anaconda3\envs\tensorflow-gpu\lib\site-packages\django\template\context.py", line 246, in bind_template
+    updates.update(processor(self.request))
+  File "D:\PythonProjects\myblog\app01\views.py", line 26, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "D:\PythonProjects\myblog\app01\models.py", line 69, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄÕÂ´æµµ')
+UnicodeEncodeError: 'locale' codec can't encode character '\u6587' in position 5: encoding error

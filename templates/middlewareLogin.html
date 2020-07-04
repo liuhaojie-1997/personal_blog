@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    {% load static %}
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sweetalert/sweetalert.css' %}">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="{% static 'jquery-1.11.3/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}"></script>
+    <script src="{% static 'sweetalert/sweetalert.min.js' %}"></script>
+
+    <style>
+        body { padding-top: 70px;
+            background-color:#eeeeee;}
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2 class="text-center">欢迎登陆</h2>
+            <form novalidate action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group ">
+                    <label>用户名</label>
+                    <input type="text" class="form-control" id="username" placeholder="username" name="username">
+                    <span class="help-block "></span>
+                </div>
+
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd">
+                    <span class="help-block"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>验证码</label>
+                    <input type="text" class="form-control" id="in_code" placeholder="验证码" name="in_code">
+                    <span class="help-block"></span>
+                    <img src="{% url 'v_code' %}" id="code" name="code">
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="mian" value="7"> 7天免登陆
+                    </label>
+                </div>
+                <button id="login_btn" type="button" class="btn btn-success">Submit</button>
+                <p style="color: red" id="p">{{error_msg}}</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    img1=document.getElementById('code')
+    img1.onclick=function () {
+        img1.src += '?'
+    }
+
+
+    $('#login_btn').click(function () {
+        var flag=true;
+        //1.找到登陆框中所有的输入框
+        $('form input').each(function(){
+            var value=$(this).val();
+            if(value.length===0){
+                //2.若为空显示提示信息
+                //2.1给下面的span标签设置文本提示内容
+                var errMsg=$(this).prev().text()+'不能为空';
+                $(this).next().text(errMsg);
+                console.log(errMsg)
+                $(this).parent().addClass('has-error');
+                //阻止表单提交
+                flag=false;
+                return false;
+            }
+        });
+        return flag;
+    })
+
+    var csrftoken=$('[name="csrfmiddlewaretoken"]').val()
+    //绑定事件
+    $('#login_btn').click(function () {
+        $.ajax({
+            url:'/middlewareLogin/',
+            type:'post',
+            data:{'username':$("#username").val(),'pwd':$('#pwd').val(),'in_code':$('#in_code').val(),'csrfmiddlewaretoken':csrftoken},
+            success:function (res) {
+                {#alert(res)#}
+                console.log(res)
+                {#var data=JSON.parse(res)#}
+                {#console.log(data)#}
+
+
+                var data=res;
+                if(data.code===0){
+                    location.href=data.next_url
+                }
+                else {
+                    $("#p").text(data.err_msg)
+                    {#alert(data.err_msg)#}
+                }
+            },
+            {#error:function (err) {#}
+            {#    alert(err)#}
+            // }
+        })
+    })
+
+
+    //给input框绑定
+    $('form input').focus(function(){
+        $("#p").text('');
+        $(this).next().text('');
+        $(this).parent().removeClass('has-error');
+    })
+</script>
+
+
+</body>
+</html>
