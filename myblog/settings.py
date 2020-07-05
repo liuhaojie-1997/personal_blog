@@ -243,8 +243,15 @@ cwd=os.getcwd()#获取当前的工作目录
 # if cwd=='/app' or cwd[:4]=='/tmp':
 #     import dj_database_url
 if os.getenv('DATABASE_URL') is not None:
+
     import dj_database_url
-    DATABASES['default'] = dj_database_url.config()
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    import os
+    import psycopg2
+
+    DATABASE_URL = os.environ['DATABASE_URL']
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     # DATABASES={
     #     'default': dj_database_url.config(default='postgres://localhost '),
     #     'PORT': '5000',
