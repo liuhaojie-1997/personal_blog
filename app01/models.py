@@ -149,7 +149,7 @@ class Ad(models.Model):
     index = models.IntegerField(default=999, verbose_name='排列顺序(从小到大)')
 
     class Meta:
-        verbose_name = u'广告'
+        verbose_name = u'ad'
         verbose_name_plural = verbose_name
         ordering = ['index', 'id']
 
