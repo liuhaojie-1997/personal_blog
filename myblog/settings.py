@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0e3(jd$8454thg32)diz^zss^m&6^jt+w4e%1cs%zuth8_p*u^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -236,18 +236,38 @@ PRO_EMAIL = 'yopoing@vip.qq.com'
 #     }
 # }
 
-#heroku 设置
-if os.getcwd()=='/app':  #获取当前目录
+
+#heroku设置
+cwd=os.getcwd()#获取当前的工作目录
+#确保这个设置文件在本地和在线都能使用，只有部署到kuroku才会执行if
+if cwd=='/app' or cwd[:4]=='/tmp':
     import dj_database_url
-    DATABASES = {
-        'default':dj_database_url.config(default='postgres://localhost')
+    DATABASES={
+        'default': dj_database_url.config(default='postgres://localhost ')
     }
+
+    SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
+
+    ALLOWED_HOSTS=['*']#支持所有的主机头
+    #静态资产配置
+    BASE_DIR=os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT='staticfiles'
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS=(
+        os.path.join(BASE_DIR,'static'),
+    )
+# #heroku 设置
+# if os.getcwd()=='/app':  #获取当前目录
+#     import dj_database_url
+#     DATABASES = {
+#         'default':dj_database_url.config(default='postgres://localhost')
+#     }
 
 #让 request.is_secure()承认X-Forearded-Proto头
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
 
 
-#ALLOWED_HOSTS = ['localhost']
+# ALLOWED_HOSTS = ['*']
 
 #静态资源配置
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -257,3 +277,4 @@ STATIC_ROOT = 'staticfiles'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR,'static'),
 # )
+# django_heroku.settings(locals())
