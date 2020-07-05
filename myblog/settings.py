@@ -243,7 +243,8 @@ cwd=os.getcwd()#获取当前的工作目录
 if cwd=='/app' or cwd[:4]=='/tmp':
     import dj_database_url
     DATABASES={
-        'default': dj_database_url.config(default='postgres://localhost ')
+        'default': dj_database_url.config(default='postgres://... '),
+        'PORT': '5000',
     }
 
     SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
@@ -254,7 +255,7 @@ if cwd=='/app' or cwd[:4]=='/tmp':
     STATIC_ROOT='staticfiles'
     STATIC_URL = '/static/'
     STATICFILES_DIRS=(
-        os.path.join(BASE_DIR,'static'),
+        os.path.join(BASE_DIR,'style'),
     )
 # #heroku 设置
 # if os.getcwd()=='/app':  #获取当前目录
@@ -277,4 +278,4 @@ STATIC_ROOT = 'staticfiles'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR,'static'),
 # )
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
