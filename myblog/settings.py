@@ -240,12 +240,15 @@ PRO_EMAIL = 'yopoing@vip.qq.com'
 #heroku设置
 cwd=os.getcwd()#获取当前的工作目录
 #确保这个设置文件在本地和在线都能使用，只有部署到kuroku才会执行if
-if cwd=='/app' or cwd[:4]=='/tmp':
+# if cwd=='/app' or cwd[:4]=='/tmp':
+#     import dj_database_url
+if os.getenv('DATABASE_URL') is not None:
     import dj_database_url
-    DATABASES={
-        'default': dj_database_url.config(default='postgres://... '),
-        'PORT': '5000',
-    }
+    DATABASES['default'] = dj_database_url.config()
+    # DATABASES={
+    #     'default': dj_database_url.config(default='postgres://localhost '),
+    #     'PORT': '5000',
+    # }
 
     SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
 
@@ -278,4 +281,4 @@ STATIC_ROOT = 'staticfiles'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR,'static'),
 # )
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
