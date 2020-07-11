@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08daf625-1003-4188-b4d4-bcd29fd46452" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cdf63048-04bb-4a08-93ef-ac10db6b053d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cdf63048-04bb-4a08-93ef-ac10db6b053d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app01/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app01/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app01/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app01/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mymiddleware/s1.py" beforeDir="false" afterPath="$PROJECT_DIR$/mymiddleware/s1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirments.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/middlewareLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/middlewareLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +46,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="blogdb: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="blogdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="blogdb: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="django_migrations: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -62,20 +79,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DatabaseDriversLRU" value="postgresql&#10;mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app01" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/style" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PythonProjects\myblog\style" />
+      <recent name="D:\PythonProjects\myblog" />
       <recent name="D:\PythonProjects\myblog\app01" />
       <recent name="D:\PythonProjects\myblog\app01\migrations" />
       <recent name="D:\PythonProjects\myblog\templates" />
-      <recent name="D:\PythonProjects\myblog\static" />
-      <recent name="D:\PythonProjects\myblog\static\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\PythonProjects\myblog\style" />
@@ -131,7 +148,7 @@
       <workItem from="1593830560745" duration="14291000" />
       <workItem from="1593848464348" duration="5000000" />
       <workItem from="1593914065027" duration="6086000" />
-      <workItem from="1593931880920" duration="13179000" />
+      <workItem from="1593931880920" duration="38033000" />
     </task>
     <servers />
   </component>
@@ -142,10 +159,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587189347154">
+    <state x="113" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594091502989">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587189347154" />
+    <state x="113" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594091502989" />
     <state x="1121" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593851511425">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -158,26 +175,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593939224572" />
-    <state width="951" height="368" key="GridCell.Tab.0.bottom" timestamp="1593987259883">
+    <state width="1877" height="394" key="GridCell.Tab.0.bottom" timestamp="1594181092809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="951" height="368" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593987259883" />
-    <state width="951" height="368" key="GridCell.Tab.0.center" timestamp="1593987259883">
+    <state width="1877" height="394" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594181092809" />
+    <state width="1877" height="394" key="GridCell.Tab.0.center" timestamp="1594181092809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="951" height="368" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593987259883" />
-    <state width="951" height="368" key="GridCell.Tab.0.left" timestamp="1593987259883">
+    <state width="1877" height="394" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594181092809" />
+    <state width="1877" height="394" key="GridCell.Tab.0.left" timestamp="1594181092809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="951" height="368" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593987259883" />
-    <state width="951" height="368" key="GridCell.Tab.0.right" timestamp="1593987259883">
+    <state width="1877" height="394" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594181092809" />
+    <state width="1877" height="394" key="GridCell.Tab.0.right" timestamp="1594181092809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="951" height="368" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593987259883" />
+    <state width="1877" height="394" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594181092809" />
     <state x="903" y="140" key="SettingsEditor" timestamp="1593921384675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="903" y="140" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1593921384675" />
+    <state x="210" y="328" key="com.intellij.database.dbimport.ImportUtil.MyDialog" timestamp="1594091229190">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="210" y="328" key="com.intellij.database.dbimport.ImportUtil.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594091229190" />
+    <state x="739" y="329" width="441" height="374" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1594092287684">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="329" width="441" height="374" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594092287684" />
+    <state x="676" y="159" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1594094370483">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="676" y="159" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594094370483" />
     <state x="1053" y="100" width="774" height="840" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593932280127">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

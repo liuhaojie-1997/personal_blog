@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0e3(jd$8454thg32)diz^zss^m&6^jt+w4e%1cs%zuth8_p*u^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -130,7 +130,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'style'),
 ]
@@ -239,35 +238,27 @@ PRO_EMAIL = 'yopoing@vip.qq.com'
 
 
 #heroku设置
-cwd=os.getcwd()#获取当前的工作目录
+# cwd=os.getcwd()#获取当前的工作目录
 #确保这个设置文件在本地和在线都能使用，只有部署到kuroku才会执行if
-# if cwd=='/app' or cwd[:4]=='/tmp':
-#     import dj_database_url
-if os.getenv('DATABASE_URL') is not None:
-
+if os.getcwd() == '/app' or os.getcwd()[:4] == '/tmp':
     import dj_database_url
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    import os
-    import psycopg2
-
-    DATABASE_URL = os.environ['DATABASE_URL']
-
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    # DATABASES={
-    #     'default': dj_database_url.config(default='postgres://localhost '),
-    #     'PORT': '5000',
-    # }
-
-    SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
-
-    ALLOWED_HOSTS=['*']#支持所有的主机头
-    #静态资产配置
-    BASE_DIR=os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT='staticfiles'
+    DATABASES = {
+        'default': dj_database_url.config(default='postgres://localhost')
+    }
+    # 让request.is_secure()承认X-Forwarded-Proto头
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # 支持所有的主机头（host header）
+    ALLOWED_HOSTS = ['*']
+    DEBUG=False
+    # 静态资产配置
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_URL = '/static/'
-    STATICFILES_DIRS=(
-        os.path.join(BASE_DIR,'style'),
-    )
+    STATIC_ROOT = 'static'
+    STATICFILES_DIRS=[
+        os.path.join(BASE_DIR, 'style'),
+    ]
+
+
 # #heroku 设置
 # if os.getcwd()=='/app':  #获取当前目录
 #     import dj_database_url
@@ -275,18 +266,7 @@ if os.getenv('DATABASE_URL') is not None:
 #         'default':dj_database_url.config(default='postgres://localhost')
 #     }
 
-#让 request.is_secure()承认X-Forearded-Proto头
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
+    #让 request.is_secure()承认X-Forearded-Proto头
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
 
 
-# ALLOWED_HOSTS = ['*']
-
-#静态资源配置
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-STATIC_ROOT = 'staticfiles'
-
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR,'static'),
-# )
-# django_heroku.settings(locals())

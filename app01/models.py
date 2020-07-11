@@ -9,12 +9,12 @@ from django.core.validators import RegexValidator
 # 扩展：关联的方式去扩展用户信息
 GENDER_CHOICE=((0,'男'),(1,'女'),(2,'保密'))
 DEFAULT_GENDER=2
-class Hobby(models.Model):
-    name=models.CharField(max_length=12)
-
-class UserInfo(models.Model):
-    username=models.CharField(max_length=32)
-    password=models.CharField(max_length=11)
+# class Hobby(models.Model):
+#     name=models.CharField(max_length=20)
+#
+# class UserInfo(models.Model):
+#     username=models.CharField(max_length=32)
+#     password=models.CharField(max_length=11)
 class User(AbstractUser):
     avatar = models.ImageField(upload_to='avatar/%Y/%m', default='avatar/default.png', max_length=200, blank=True, null=True, verbose_name='用户头像')
     qq = models.CharField(max_length=20, blank=True, null=True, verbose_name='QQ号码')
@@ -141,7 +141,7 @@ class Links(models.Model):
 
 # 广告
 class Ad(models.Model):
-    title = models.CharField(max_length=50, verbose_name='广告标题')
+    title = models.CharField(max_length=60, verbose_name='广告标题')
     description = models.CharField(max_length=200,  verbose_name='广告描述')
     image_url = models.ImageField(upload_to='ad/%Y/%m', verbose_name='图片路径')
     callback_url = models.URLField(null=True, blank=True, verbose_name='回调url')

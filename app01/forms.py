@@ -3,7 +3,7 @@ from django import forms
 from django.conf import settings
 from django.db.models import Q
 from django.core.exceptions import ValidationError
-from app01.models import User,Hobby,Comment,Article
+from app01.models import User,Comment,Article
 # from app01.models import GENDER_CHOICE,DEFAULT_GENDER
 import re
 
@@ -44,12 +44,15 @@ class RegForm(forms.ModelForm):
     #     choices=Hobby.objects.all().values_list('id','name'),
     #     # initial=DEFAULT_GENDER,
     # )
-    hobby=forms.ChoiceField(
-        label='爱好',
-        widget=forms.widgets.RadioSelect(),
-        choices=Hobby.objects.all().values_list('id','name'),
-        # initial=DEFAULT_GENDER,
-    )
+
+
+    # hobby=forms.ChoiceField(
+    #     label='爱好',
+    #     widget=forms.widgets.RadioSelect(),
+    #     choices=Hobby.objects.all().values_list('id','name'),
+    #     # initial=DEFAULT_GENDER,
+    # )
+
     gender = forms.ChoiceField(
         label='性别',
         required=True,
@@ -103,7 +106,7 @@ class RegForm(forms.ModelForm):
 
     def clean_mobile(self):
         mobile=self.cleaned_data.get('mobile')
-        print('value_name',mobile)
+        print('value_mobile',mobile)
         print('%'*120)
         is_exit= User.objects.filter(mobile=mobile)
         if is_exit:
@@ -115,12 +118,12 @@ class RegForm(forms.ModelForm):
     #https://www.cnblogs.com/liwenzhou/p/8747872.htmlauto
     def __init__(self, *args, **kwargs):
         super(RegForm, self).__init__(*args, **kwargs)
-        self.fields['hobby'].choices=Hobby.objects.all().values_list('id','name')
+        # self.fields['hobby'].choices=Hobby.objects.all().values_list('id','name')
         for field in iter(self.fields):
             if field=='gender':
                 break
-            if field=='hobby':
-                break
+            # if field=='hobby':
+            #     break
                 # self.fields[field].widget.attrs.update({'class'})
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
@@ -156,7 +159,7 @@ class CommentForm(forms.Form):
     article = forms.CharField(widget=forms.HiddenInput())
 
     class Meta:
-        model=Comment  #若views里用save注册，此处对应authUserInfo而非UsrInfo
+        model=Comment  #若views里用save注册，此处对应authUserInfo而非UserInfo
         fields=['author','email','url','comment','article']
         labels={
             'email':'邮箱',

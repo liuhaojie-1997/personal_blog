@@ -20,27 +20,27 @@ from django.shortcuts import redirect ,HttpResponse
 #         return response
 #     #返回响应时倒序
 from django.conf import settings
-from app01.models import User,UserInfo
+# from app01.models import User,UserInfo
 import time
-class CheckLogin(MiddlewareMixin):
-    def process_request(self,request):
-        #判断配置项是否有配置，没有则初始化一个列表
-        # while_urls=settings.WHITE_URLS if settings.WHITE_URLS else []
-        while_urls=settings.WHITE_URLS if hasattr(settings,'WHITE_URLS') else []
-        #判断是否在白名单,在就放行
-        if request.path_info in while_urls:
-            return None
-        #从session中获取user_id，如果有，则登陆过，无则跳转到登陆页面
-        user_id=request.session.get('user_id',None)
-        print(user_id)
-        print('$'*120)
-        if not user_id:
-            return redirect('/middlewareLogin/')
-        else:
-            user_obj=UserInfo.objects.get(id=user_id)
-            print(user_obj.username)
-            #把user对象赋值给request对象自定义属性user
-            request.user=user_obj.username
+# class CheckLogin(MiddlewareMixin):
+#     def process_request(self,request):
+#         #判断配置项是否有配置，没有则初始化一个列表
+#         # while_urls=settings.WHITE_URLS if settings.WHITE_URLS else []
+#         while_urls=settings.WHITE_URLS if hasattr(settings,'WHITE_URLS') else []
+#         #判断是否在白名单,在就放行
+#         if request.path_info in while_urls:
+#             return None
+#         #从session中获取user_id，如果有，则登陆过，无则跳转到登陆页面
+#         user_id=request.session.get('user_id',None)
+#         print(user_id)
+#         print('$'*120)
+#         if not user_id:
+#             return redirect('/middlewareLogin/')
+#         else:
+#             user_obj=UserInfo.objects.get(id=user_id)
+#             print(user_obj.username)
+#             #把user对象赋值给request对象自定义属性user
+#             request.user=user_obj.username
 
 ACCESS_RECORD={}
 class Throttle(MiddlewareMixin):

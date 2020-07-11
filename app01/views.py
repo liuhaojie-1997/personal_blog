@@ -202,8 +202,8 @@ def register(request):
 
         res={'code':0}
         form_obj_recv= RegForm(request.POST)
-        print(form_obj_recv)
-        print('#'*120)
+        # print(form_obj_recv)
+        # print('#'*120)
         if form_obj_recv.is_valid():
             # print(form_obj_recv)
             # print('#'*120)
